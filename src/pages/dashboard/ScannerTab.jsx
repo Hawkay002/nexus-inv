@@ -17,7 +17,6 @@ export default function ScannerTab({ bills, saveBills }) {
   const cropperInstance = useRef(null);
   const scannerRef = useRef(null);
 
-  // Initialize CropperJS native instance when image source changes
   useEffect(() => {
     if (activeMode === 'upload' && imageSrc && imageElementRef.current) {
       if (cropperInstance.current) {
@@ -43,7 +42,6 @@ export default function ScannerTab({ bills, saveBills }) {
     setActiveMode('camera');
     setScanResult(null);
     
-    // Slight delay to ensure the DOM node is ready before Quagga binds to it
     setTimeout(() => {
       Quagga.init({
         inputStream: { 
@@ -127,24 +125,24 @@ export default function ScannerTab({ bills, saveBills }) {
   return (
     <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
        <div>
-        <h2 className="text-3xl font-display font-bold tracking-tight">Invoice Scanner</h2>
-        <p className="text-premium-700 mt-1">Scan physical invoice barcodes to instantly mark them as paid.</p>
+        <h2 className="text-2xl md:text-3xl font-display font-bold tracking-tight">Invoice Scanner</h2>
+        <p className="text-premium-700 mt-1 text-sm md:text-base">Scan physical invoice barcodes to instantly mark them as paid.</p>
       </div>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
         <button 
           onClick={startCamera} 
-          className={`p-8 rounded-2xl border-2 flex flex-col items-center gap-4 transition-all ${activeMode === 'camera' ? 'border-accent-600 bg-accent-50 text-accent-700 shadow-sm' : 'border-premium-100 bg-white text-premium-700 hover:border-premium-300'}`}
+          className={`p-6 md:p-8 rounded-2xl border-2 flex flex-col items-center gap-3 md:gap-4 transition-all ${activeMode === 'camera' ? 'border-accent-600 bg-accent-50 text-accent-700 shadow-sm' : 'border-premium-100 bg-white text-premium-700 hover:border-premium-300'}`}
         >
-          <Camera size={48} />
-          <span className="font-semibold text-lg">Use Camera</span>
+          <Camera size={40} className="md:w-12 md:h-12" />
+          <span className="font-semibold text-base md:text-lg">Use Camera</span>
         </button>
         
         <label 
-          className={`p-8 rounded-2xl border-2 border-dashed flex flex-col items-center gap-4 transition-all cursor-pointer ${activeMode === 'upload' ? 'border-accent-600 bg-accent-50 text-accent-700 shadow-sm' : 'border-premium-300 bg-white text-premium-700 hover:border-accent-400 hover:bg-premium-50'}`}
+          className={`p-6 md:p-8 rounded-2xl border-2 border-dashed flex flex-col items-center gap-3 md:gap-4 transition-all cursor-pointer ${activeMode === 'upload' ? 'border-accent-600 bg-accent-50 text-accent-700 shadow-sm' : 'border-premium-300 bg-white text-premium-700 hover:border-accent-400 hover:bg-premium-50'}`}
         >
-          <Upload size={48} />
-          <span className="font-semibold text-lg">Upload Image</span>
+          <Upload size={40} className="md:w-12 md:h-12" />
+          <span className="font-semibold text-base md:text-lg">Upload Image</span>
           <input type="file" accept="image/*" className="hidden" onChange={handleImageUpload} />
         </label>
       </div>
