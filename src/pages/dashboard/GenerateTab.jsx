@@ -79,16 +79,17 @@ export default function GenerateTab({ config, bills, saveBills }) {
     setCurrElec('');
     setCurrAc('');
 
-    // Capture Invoice
+    // FIX: Added scrollX and scrollY 0 to enforce zero offsets and removed window dimension conflicts
     const canvas = await html2canvas(invoiceRef.current, { 
-  scale: 2, 
-  useCORS: true, 
-  backgroundColor: '#ffffff',
-  width: 1123,
-  height: 794,
-  windowWidth: 1123,
-  windowHeight: 794
-});
+      scale: 2, 
+      useCORS: true, 
+      backgroundColor: '#ffffff',
+      width: 1123,
+      height: 794,
+      scrollX: 0,
+      scrollY: 0
+    });
+    
     canvas.toBlob(async (blob) => {
       const file = new File([blob], `Invoice_${generatedInvoice.id}.png`, { type: 'image/png' });
       const caption = `Invoice Date: ${format(new Date(generatedInvoice.date), 'dd MMM yyyy, hh:mm a')}`;
