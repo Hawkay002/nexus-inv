@@ -40,23 +40,23 @@ export default function Profile() {
   };
 
   return (
-    <div className="min-h-screen bg-premium-50 p-4 md:p-8 flex justify-center">
+    <div className="min-h-screen bg-premium-50 p-8 flex justify-center">
       <div className="max-w-3xl w-full">
-        <button onClick={() => navigate('/dashboard')} className="flex items-center gap-2 text-premium-700 hover:text-premium-900 mb-6 md:mb-8 font-medium transition-colors">
+        <button onClick={() => navigate('/dashboard')} className="flex items-center gap-2 text-premium-700 hover:text-premium-900 mb-8 font-medium transition-colors">
           <ArrowLeft size={20} /> Back to Dashboard
         </button>
         
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 md:mb-8 gap-4">
-          <h1 className="text-2xl md:text-3xl font-display font-bold">Configuration</h1>
-          <button onClick={() => setConfirmModal(true)} className="w-full md:w-auto flex justify-center items-center gap-2 text-red-600 bg-red-50 hover:bg-red-100 px-4 py-3 md:py-2 rounded-lg font-medium transition-all">
+        <div className="flex items-center justify-between mb-8">
+          <h1 className="text-3xl font-display font-bold">Configuration</h1>
+          <button onClick={() => setConfirmModal(true)} className="flex items-center gap-2 text-red-600 bg-red-50 hover:bg-red-100 px-4 py-2 rounded-lg font-medium transition-all">
             <Trash2 size={18} /> Clear Tenant Data
           </button>
         </div>
 
-        <form onSubmit={handleSave} className="space-y-6 md:space-y-8">
-          <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-premium-100">
-            <h2 className="text-lg md:text-xl font-display font-semibold mb-4 md:mb-6 pb-4 border-b border-premium-100">Owner Details</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+        <form onSubmit={handleSave} className="space-y-8">
+          <div className="bg-white p-8 rounded-2xl shadow-sm border border-premium-100">
+            <h2 className="text-xl font-display font-semibold mb-6 pb-4 border-b border-premium-100">Owner Details</h2>
+            <div className="grid grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium mb-2">Owner Name</label>
                 <input required type="text" name="ownerName" value={formData.ownerName} onChange={handleChange} className="input-field" />
@@ -65,16 +65,16 @@ export default function Profile() {
                 <label className="block text-sm font-medium mb-2">Phone Number</label>
                 <input required type="tel" name="ownerPhone" value={formData.ownerPhone} onChange={handleChange} className="input-field" />
               </div>
-              <div className="md:col-span-2">
+              <div className="col-span-2">
                 <label className="block text-sm font-medium mb-2">UPI ID</label>
                 <input required type="text" name="upiId" value={formData.upiId} onChange={handleChange} className="input-field" />
               </div>
             </div>
           </div>
 
-          <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-premium-100">
-            <h2 className="text-lg md:text-xl font-display font-semibold mb-4 md:mb-6 pb-4 border-b border-premium-100">Tenant & Rates</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          <div className="bg-white p-8 rounded-2xl shadow-sm border border-premium-100">
+            <h2 className="text-xl font-display font-semibold mb-6 pb-4 border-b border-premium-100">Tenant & Rates</h2>
+            <div className="grid grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium mb-2">Tenant Name</label>
                 <input required type="text" name="tenantName" value={formData.tenantName} onChange={handleChange} className="input-field" />
